@@ -10,7 +10,6 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import { client } from '@/lib/prismadb';
 
 import bcrypt from 'bcrypt';
-import axios from 'axios';
 
 export const authOptions: AuthOptions = {
     // Configure one or more authentication providers
@@ -62,9 +61,9 @@ export const authOptions: AuthOptions = {
             },
         }),
     ],
-    pages: {
-        signIn: '/',
-    },
+    // pages: {
+    //     signIn: '/',
+    // },
     debug: process.env.NODE_ENV === 'development',
     session: {
         strategy: 'jwt',

@@ -1,20 +1,26 @@
-import getMatchInfo from '@/actions/match/getMatchInfoById';
-import getMatchType from '@/actions/match/getMatchType';
-import getUserMatchIds from '@/actions/match/getUserMatchIds';
-import getCardImage from '@/actions/meta/getCardImage';
-import getSeasonInfo from '@/actions/meta/getSeasonInfo';
-import getTierName from '@/actions/meta/getTierName';
-import getTierVolta from '@/actions/meta/getTierVolta';
-import Image from 'next/image';
+import { useEffect } from 'react';
+
+// https://cheerio.js.org/docs/intro
+import * as cheerio from 'cheerio';
+import axios from 'axios';
 
 const UserSearchPage = async () => {
-    const a = await getCardImage(100000250);
-    console.log(a);
-    return (
-        <div>
-            <Image width={500} height={500} alt="a" src={a!} />
-        </div>
-    );
+    const url = 'https://weeeeey.tistory.com/';
+
+    // 페이지 내용을 가져옵니다.
+    const { data } = await axios.get(url);
+
+    // Cheerio를 사용하여 페이지를 파싱합니다.
+
+    const $ = cheerio.load(data);
+
+    // // 크롤링할 내용을 선택자를 사용하여 추출합니다.
+    const crawledData = {
+        tbody: $('p.summary').text(),
+        //     // 여기에 원하는 데이터를 추가로 추출할 수 있습니다.
+    };
+    console.log(crawledData.tbody);
+    return <div></div>;
 };
 
 export default UserSearchPage;

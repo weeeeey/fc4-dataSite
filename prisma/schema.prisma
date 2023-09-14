@@ -52,3 +52,28 @@ model Account {
 
     @@unique([provider, providerAccountId])
 }
+
+model Season{
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt  
+
+  seasonId       Int
+  className      String
+  seasonImg      String
+
+  players        Player[]
+}
+
+model Player {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt  
+  
+  pId            Int
+  name           String
+      
+  seasonId       String  @db.ObjectId
+  season         Season    @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+}
+

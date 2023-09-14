@@ -1,10 +1,10 @@
-import getUserInfo from '@/actions/user/getUserInfo';
-import getUserTier from '@/actions/user/getUserTier';
-import getUserTrade from '@/actions/user/getUserTrade';
+import getMatchInfo from '@/actions/match/getMatchInfoById';
+import getMatchType from '@/actions/meta/getMatchType';
+import getUserMatchIds from '@/actions/match/getUserMatchIds';
 
 const UserSearchPage = async () => {
-    const a = await getUserInfo('위영진');
-    console.log(a);
+    const a = await getMatchInfo('6501e6a21aad0199a3d82656');
+
     return <div>asd</div>;
 };
 

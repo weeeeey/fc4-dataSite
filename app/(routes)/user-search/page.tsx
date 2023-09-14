@@ -1,25 +1,11 @@
-import axios from 'axios';
-import React from 'react';
-import qs from 'query-string';
+import getUserInfo from '@/actions/user/getUserInfo';
+import getUserTier from '@/actions/user/getUserTier';
+import getUserTrade from '@/actions/user/getUserTrade';
 
 const UserSearchPage = async () => {
-    const url = 'https://api.nexon.co.kr/fifaonline4/v1.0/users';
-    const query = {
-        nickname: '위영진',
-    };
-    const URL = qs.stringifyUrl({
-        url,
-        query,
-    });
-    console.log(URL);
-
-    const res = await axios(URL, {
-        headers: {
-            Authorization: process.env.NEXON_API_KEY,
-        },
-    });
-    console.log(res.data);
-    return <div>ㅁㄴㅇ</div>;
+    const a = await getUserInfo('위영진');
+    console.log(a);
+    return <div>asd</div>;
 };
 
 export default UserSearchPage;

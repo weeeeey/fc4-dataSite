@@ -1,3 +1,4 @@
+// User type
 type TypeUserInfo = {
     accessId: string;
     nickname: string;
@@ -18,6 +19,7 @@ type TypeUserTrade = {
     value: number;
 };
 
+// Match Type
 type TypeUserMatchId = {
     matchId: string;
 };
@@ -175,4 +177,12 @@ type TypePlayer = {
     spPosition: number;
     spGrade: number;
     status: TypeStatus;
+};
+
+// Card Type
+
+type TypeCardSeason = {
+    seasonId: number;
+    className: string;
+    seasonImg: string;
 };
